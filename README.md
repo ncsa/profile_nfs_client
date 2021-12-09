@@ -25,4 +25,11 @@ profile_nfs_client::mountmap:
 
 ## Reference
 
+### define profile_nfs_client::nfsmount (
+-  String $src,
+-  Optional[String] $opts = 'defaults',
+### class profile_nfs_client (
+-  Array[ String ] $required_pkgs,
+-  Hash $mountmap,
+
 [REFERENCE.md](REFERENCE.md)
