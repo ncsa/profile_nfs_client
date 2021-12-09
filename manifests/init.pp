@@ -24,7 +24,7 @@ class profile_nfs_client (
   ensure_packages( $required_pkgs )
 
   $mountmap.each | $k, $v | {
-    nfsmount{ $k: * => $v }
+    profile_nfs_client::nfsmount { $k: * => $v }
   }
 
 }
