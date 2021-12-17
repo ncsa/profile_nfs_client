@@ -1,20 +1,31 @@
 # @summary Mount NFS export on a directory
 #
+# @param src
+#   Source filesystem to be mounted
+#
+# @param fstype
+#   Filesystem type to be mounted
+#
+# @param opts
+#   Options for the filesystem mount
+#
 # @example
 #   profile_nfs_client::nfsmount { '/mnt/mount': 
 #     src => 'nfs-server.local:/export/path', 
+#     fstype => 'nfs4',
 #     opts => 'defaults,nosuid,ro' 
 #   }
 #
 define profile_nfs_client::nfsmount (
   String $src,
+  Optional[String] $fstype = 'nfs4',
   Optional[String] $opts = 'defaults',
 ) {
 
   # Resource defaults
   Mount {
     ensure => mounted,
-    fstype => 'nfs',
+    fstype => $fstype,
   }
   File {
     ensure => directory,

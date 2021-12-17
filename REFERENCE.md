@@ -20,6 +20,7 @@
   profile_nfs_client::mountmap:
     /mnt/mount:
       src: "nfs-server.local:/export/path"
+      fstype: "nfs4"
       opts: "defaults,nosuid,ro"
 ```
 
@@ -65,6 +66,7 @@ Mount NFS export on a directory
 ```puppet
 profile_nfs_client::nfsmount { '/mnt/mount':
   src => 'nfs-server.local:/export/path',
+  fstype => 'nfs4',
   opts => 'defaults,nosuid,ro'
 }
 ```
@@ -74,19 +76,28 @@ profile_nfs_client::nfsmount { '/mnt/mount':
 The following parameters are available in the `profile_nfs_client::nfsmount` defined type:
 
 * [`src`](#src)
+* [`fstype`](#fstype)
 * [`opts`](#opts)
 
 ##### <a name="src"></a>`src`
 
 Data type: `String`
 
+Source filesystem to be mounted
 
+##### <a name="fstype"></a>`fstype`
+
+Data type: `Optional[String]`
+
+Filesystem type to be mounted
+
+Default value: `'nfs4'`
 
 ##### <a name="opts"></a>`opts`
 
 Data type: `Optional[String]`
 
-
+Options for the filesystem mount
 
 Default value: `'defaults'`
 

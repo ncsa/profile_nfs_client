@@ -20,16 +20,18 @@ The following parameters need to be set (hiera example):
 profile_nfs_client::mountmap:
   /mnt/mount:
     src: "nfs-server.local:/export/path"
+    fstype: "nfs4"  ## DEFAULT IS 'nfs4'
     opts: "defaults,nosuid,ro"
 ```
 
 ## Reference
 
+[REFERENCE.md](REFERENCE.md)
+
 ### define profile_nfs_client::nfsmount (
 -  String $src,
+-  Optional[String] $fstype = 'nfs4',
 -  Optional[String] $opts = 'defaults',
 ### class profile_nfs_client (
 -  Array[ String ] $required_pkgs,
 -  Hash $mountmap,
-
-[REFERENCE.md](REFERENCE.md)

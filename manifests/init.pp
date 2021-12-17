@@ -11,6 +11,7 @@
 #   profile_nfs_client::mountmap:
 #     /mnt/mount:
 #       src: "nfs-server.local:/export/path"
+#       fstype: "nfs4"
 #       opts: "defaults,nosuid,ro"
 # ```
 #
