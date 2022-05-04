@@ -12,14 +12,14 @@
 # @example
 #   profile_nfs_client::nfsmount { '/mnt/mount': 
 #     src => 'nfs-server.local:/export/path', 
-#     fstype => 'nfs4',
-#     opts => 'defaults,nosuid,ro' 
+#     fstype => 'nfs',
+#     opts => 'defaults,nosuid,nodev,ro' 
 #   }
 #
 define profile_nfs_client::nfsmount (
   String $src,
-  Optional[String] $fstype = 'nfs4',
-  Optional[String] $opts = 'defaults',
+  Optional[String] $fstype = 'nfs',
+  Optional[String] $opts = 'defaults,nosuid,nodev',
 ) {
 
   # Resource defaults

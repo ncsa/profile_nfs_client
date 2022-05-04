@@ -1,0 +1,7 @@
+---
+profile_nfs_client::masked_units:
+  - "gssproxy.service"
+  - "rpc-gssd.service"
+  - "rpc-statd.service"
+  - "rpcbind.service"
+  - "rpcbind.socket"
