@@ -3,8 +3,8 @@
 #profile_nfs_client::mountmap:
 #  /mnt/mount:
 #    src: "nfs-server.local:/export/path"
-#    fstype: "nfs4"
-#    opts: "defaults,nosuid,ro"
+#    fstype: "nfs"
+#    opts: "defaults,nosuid,nodev,ro"
 
 profile_nfs_client::required_pkgs:
   - "nfs-utils"

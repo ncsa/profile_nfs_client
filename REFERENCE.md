@@ -21,7 +21,7 @@
     /mnt/mount:
       src: "nfs-server.local:/export/path"
       fstype: "nfs4"
-      opts: "defaults,nosuid,ro"
+      opts: "defaults,nosuid,nodev,ro"
 ```
 
 #### Examples
@@ -36,14 +36,15 @@ include profile_nfs_client
 
 The following parameters are available in the `profile_nfs_client` class:
 
-* [`required_pkgs`](#required_pkgs)
+* [`masked_units`](#masked_units)
 * [`mountmap`](#mountmap)
+* [`required_pkgs`](#required_pkgs)
 
-##### <a name="required_pkgs"></a>`required_pkgs`
+##### <a name="masked_units"></a>`masked_units`
 
 Data type: `Array[ String ]`
 
-Packages that need to be installed for NFS mounts to work.
+List of systemctl units that should to be masked
 
 ##### <a name="mountmap"></a>`mountmap`
 
@@ -52,6 +53,12 @@ Data type: `Hash`
 mapping of NFS exports to local mount points
 
 Example hiera parameter:
+
+##### <a name="required_pkgs"></a>`required_pkgs`
+
+Data type: `Array[ String ]`
+
+Packages that need to be installed for NFS mounts to work.
 
 ## Defined types
 
@@ -66,8 +73,8 @@ Mount NFS export on a directory
 ```puppet
 profile_nfs_client::nfsmount { '/mnt/mount':
   src => 'nfs-server.local:/export/path',
-  fstype => 'nfs4',
-  opts => 'defaults,nosuid,ro'
+  fstype => 'nfs',
+  opts => 'defaults,nosuid,nodev,ro'
 }
 ```
 
@@ -91,7 +98,7 @@ Data type: `Optional[String]`
 
 Filesystem type to be mounted
 
-Default value: `'nfs4'`
+Default value: `'nfs'`
 
 ##### <a name="opts"></a>`opts`
 
@@ -99,5 +106,5 @@ Data type: `Optional[String]`
 
 Options for the filesystem mount
 
-Default value: `'defaults'`
+Default value: `'defaults,nosuid,nodev'`
 
