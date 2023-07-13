@@ -21,15 +21,13 @@
 # @example
 #   include profile_nfs_client
 class profile_nfs_client (
-  Array[ String ] $masked_units,
+  Array[String] $masked_units,
   Hash            $mountmap,
-  Array[ String ] $required_pkgs,
+  Array[String] $required_pkgs,
 ) {
-
   ensure_packages( $required_pkgs )
 
-  each($masked_units) | $unit |
-  {
+  each($masked_units) | $unit | {
     exec { "mask_unit_${unit}":
       command => "systemctl mask --now ${unit}",
       unless  => "systemctl is-enabled ${unit} | grep -i masked",
@@ -40,5 +38,4 @@ class profile_nfs_client (
   $mountmap.each | $k, $v | {
     profile_nfs_client::nfsmount { $k: * => $v }
   }
-
 }

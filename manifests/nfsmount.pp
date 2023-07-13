@@ -21,7 +21,6 @@ define profile_nfs_client::nfsmount (
   Optional[String] $fstype = 'nfs',
   Optional[String] $opts = 'defaults,nosuid,nodev',
 ) {
-
   # Resource defaults
   Mount {
     ensure => mounted,
@@ -35,7 +34,7 @@ define profile_nfs_client::nfsmount (
   $dirparts = reject( split( $name, '/' ), '^$' )
   $numparts = size( $dirparts )
   if ( $numparts > 1 ) {
-    each( Integer[2,$numparts] ) |$i| {
+    each(Integer[2,$numparts]) |$i| {
       ensure_resource(
         'file',
         reduce( Integer[2,$i], $name ) |$memo, $val| { dirname( $memo ) },
@@ -52,9 +51,8 @@ define profile_nfs_client::nfsmount (
     device  => $src,
     options => $opts,
     require => [
-      File[ $name ],
-      Package[ $profile_nfs_client::required_pkgs ],
+      File[$name],
+      Package[$profile_nfs_client::required_pkgs],
     ],
   }
-
 }
