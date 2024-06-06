@@ -5,7 +5,3 @@
 #    src: "nfs-server.local:/export/path"
 #    fstype: "nfs"
 #    opts: "defaults,nosuid,nodev,ro"
-
-profile_nfs_client::required_pkgs:
-  - "nfs-utils"
-  - "nfs4-acl-tools"  # SVCPLAN-2009 (needed to manage/view NFSv4 ACLs)

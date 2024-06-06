@@ -10,7 +10,7 @@
 
 ### Defined types
 
-* [`profile_nfs_client::nfsmount`](#profile_nfs_clientnfsmount): Mount NFS export on a directory
+* [`profile_nfs_client::nfsmount`](#profile_nfs_client--nfsmount): Mount NFS export on a directory
 
 ## Classes
 
@@ -36,17 +36,17 @@ include profile_nfs_client
 
 The following parameters are available in the `profile_nfs_client` class:
 
-* [`masked_units`](#masked_units)
-* [`mountmap`](#mountmap)
-* [`required_pkgs`](#required_pkgs)
+* [`masked_units`](#-profile_nfs_client--masked_units)
+* [`mountmap`](#-profile_nfs_client--mountmap)
+* [`required_pkgs`](#-profile_nfs_client--required_pkgs)
 
-##### <a name="masked_units"></a>`masked_units`
+##### <a name="-profile_nfs_client--masked_units"></a>`masked_units`
 
-Data type: `Array[ String ]`
+Data type: `Array[String]`
 
 List of systemctl units that should to be masked
 
-##### <a name="mountmap"></a>`mountmap`
+##### <a name="-profile_nfs_client--mountmap"></a>`mountmap`
 
 Data type: `Hash`
 
@@ -54,15 +54,15 @@ mapping of NFS exports to local mount points
 
 Example hiera parameter:
 
-##### <a name="required_pkgs"></a>`required_pkgs`
+##### <a name="-profile_nfs_client--required_pkgs"></a>`required_pkgs`
 
-Data type: `Array[ String ]`
+Data type: `Array[String]`
 
 Packages that need to be installed for NFS mounts to work.
 
 ## Defined types
 
-### <a name="profile_nfs_clientnfsmount"></a>`profile_nfs_client::nfsmount`
+### <a name="profile_nfs_client--nfsmount"></a>`profile_nfs_client::nfsmount`
 
 Mount NFS export on a directory
 
@@ -82,17 +82,17 @@ profile_nfs_client::nfsmount { '/mnt/mount':
 
 The following parameters are available in the `profile_nfs_client::nfsmount` defined type:
 
-* [`src`](#src)
-* [`fstype`](#fstype)
-* [`opts`](#opts)
+* [`src`](#-profile_nfs_client--nfsmount--src)
+* [`fstype`](#-profile_nfs_client--nfsmount--fstype)
+* [`opts`](#-profile_nfs_client--nfsmount--opts)
 
-##### <a name="src"></a>`src`
+##### <a name="-profile_nfs_client--nfsmount--src"></a>`src`
 
 Data type: `String`
 
 Source filesystem to be mounted
 
-##### <a name="fstype"></a>`fstype`
+##### <a name="-profile_nfs_client--nfsmount--fstype"></a>`fstype`
 
 Data type: `Optional[String]`
 
@@ -100,7 +100,7 @@ Filesystem type to be mounted
 
 Default value: `'nfs'`
 
-##### <a name="opts"></a>`opts`
+##### <a name="-profile_nfs_client--nfsmount--opts"></a>`opts`
 
 Data type: `Optional[String]`
 
